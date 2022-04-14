@@ -121,7 +121,7 @@ async def my_event_handler(event):
                         hasallusers = int(row[0]) > 0
                     if hasallusers:
                         hasinvite = False
-                        cursor.execute("select count(1) from users where admin=1 and name='" + invite + "';")
+                        cursor.execute("select count(1) from users where admin=1 and name='" + str(invite) + "';")
                         records = cursor.fetchall()
                         for row in records:
                             hasinvite = int(row[0]) > 0
