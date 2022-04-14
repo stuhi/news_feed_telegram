@@ -45,7 +45,7 @@ async def my_event_handler(event):
                         channel = await client.get_entity(PeerChannel(event.message.fwd_from.from_id.channel_id))
                         channel_name = utils.get_display_name(channel)
                         await client(JoinChannelRequest(channel))
-                        cursor.execute("insert into channels (id, name) values (" + str(channel_id) + ", '" + channel_name + "');")
+                        cursor.execute("insert into channels (id, name) values (" + str(channel_id) + ", '" + str(channel_name) + "');")
                         sqlite_connection.commit() 
                     hasfollowuser = False
                     cursor.execute('select count(1) from channels_users where channel_id=' + str(channel_id) + ' and user_id=' + str(user_id) + ';')
@@ -61,7 +61,7 @@ async def my_event_handler(event):
                     for row in records:
                         channel_id = row[0]
                         channel_name = row[1]
-                        await client.send_message(user_id, channel_name + '\r\n/stop_' + str(channel_id))                        
+                        await client.send_message(user_id, str(channel_name) + '\r\n/stop_' + str(channel_id))                        
                 elif event.message.message.startswith('/stop_'):
                     channel_id = int(event.message.message.replace("/stop_", ""))
                     cursor.execute("delete from channels_users where channel_id=" + str(channel_id) + " and user_id=" + str(user_id) + ";")
@@ -89,7 +89,7 @@ async def my_event_handler(event):
                             for row in records:
                                 item_id = row[0]
                                 item_name = row[1]
-                                await client.send_message(user_id, item_name + '\r\n/kick_' + str(item_id))
+                                await client.send_message(user_id, str(item_name) + '\r\n/kick_' + str(item_id))
                         elif event.message.message.startswith('/kick_'):
                             item_id = int(event.message.message.replace("/kick_", ""))
                             if user_id != item_id:
