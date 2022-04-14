@@ -41,7 +41,7 @@ async def my_event_handler(event):
                     records = cursor.fetchall()
                     for row in records:
                         haschannel = int(row[0]) > 0
-                    if !haschannel:
+                    if haschannel == False:
                         channel = await client.get_entity(PeerChannel(event.message.fwd_from.from_id.channel_id))
                         channel_name = utils.get_display_name(channel)
                         await client(JoinChannelRequest(channel))
@@ -52,7 +52,7 @@ async def my_event_handler(event):
                     records = cursor.fetchall()
                     for row in records:
                         hasfollowuser = int(row[0]) > 0
-                    if !hasfollowuser:
+                    if hasfollowuser == False:
                         cursor.execute("insert into channels_users (channel_id, user_id) values (" + str(channel_id) + ", " + str(user_id) + ");")
                         sqlite_connection.commit()
                 elif event.message.message == '/channels':
