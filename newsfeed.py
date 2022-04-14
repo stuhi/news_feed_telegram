@@ -41,7 +41,7 @@ async def my_event_handler(event):
                     records = cursor.fetchall()
                     for row in records:
                         haschannel = int(row[0]) > 0
-                    if haschannel:
+                    if !haschannel:
                         channel = await client.get_entity(PeerChannel(event.message.fwd_from.from_id.channel_id))
                         channel_name = utils.get_display_name(channel)
                         await client(JoinChannelRequest(channel))
