@@ -6,9 +6,9 @@ import sqlite3
 
 api_id = 00000000
 api_hash = '00000000000000000000000000000000'
-client = TelegramClient('twitter', api_id, api_hash)
+client = TelegramClient('news_feed', api_id, api_hash)
 
-sqlite_connection = sqlite3.connect('twitter.db')
+sqlite_connection = sqlite3.connect('news_feed.db')
 cursor = sqlite_connection.cursor()
 cursor.execute('create table if not exists channels (id integer not null, name text not null);')
 cursor.execute('create table if not exists users (id integer not null, name text not null, admin integer not null);')
