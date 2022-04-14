@@ -126,10 +126,10 @@ async def my_event_handler(event):
                         for row in records:
                             hasinvite = int(row[0]) > 0
                         if hasinvite:
-                            cursor.execute("insert into users (id, name, admin) values (" + str(user_id) + ", '" + user_name + "', 0);")
+                            cursor.execute("insert into users (id, name, admin) values (" + str(user_id) + ", '" + str(user_name) + "', 0);")
                             sqlite_connection.commit()
                     else:
-                        cursor.execute("insert into users (id, name, admin) values (" + str(user_id) + ", '" + user_name + "', 1);")
+                        cursor.execute("insert into users (id, name, admin) values (" + str(user_id) + ", '" + str(user_name) + "', 1);")
                         sqlite_connection.commit()
     except Exception as e:
         print(str(event) + '\n**********\n' + str(e) + '\n**********\n')
