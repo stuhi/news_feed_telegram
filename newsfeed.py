@@ -52,7 +52,7 @@ async def my_event_handler(event):
                     records = cursor.fetchall()
                     for row in records:
                         hasfollowuser = int(row[0]) > 0
-                    if hasfollowuser:
+                    if !hasfollowuser:
                         cursor.execute("insert into channels_users (channel_id, user_id) values (" + str(channel_id) + ", " + str(user_id) + ");")
                         sqlite_connection.commit()
                 elif event.message.message == '/channels':
