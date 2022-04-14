@@ -132,7 +132,6 @@ async def my_event_handler(event):
                         cursor.execute("insert into users (id, name, admin) values (" + str(user_id) + ", '" + user_name + "', 1);")
                         sqlite_connection.commit()
     except Exception as e:
-        print(str(event) + '\n**********\n')
-        print(str(e) + '\n**********\n')
+        print(str(event) + '\n**********\n' + str(e) + '\n**********\n')
 client.start()
 client.run_until_disconnected()
