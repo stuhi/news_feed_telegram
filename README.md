@@ -9,11 +9,13 @@ Ubuntu 20.04:
 5. run: python3 newsfeed.py
 6. telegram: send to chat /invite_ and forward open channels
 7. added other user: send to chat /invite_{your username}
-____________________________________________________________
 
 Create deamon:
+```
 sudo nano /etc/systemd/system/newsfeed.service
-____________________________________________________________
+```
+
+```
 [Unit]
 Description=news_feed_telegram
 After=syslog.target
@@ -27,9 +29,11 @@ ExecStart=/usr/bin/python3 newsfeed.py
 
 [Install]
 WantedBy=multi-user.target
-____________________________________________________________
+```
 
+```
 sudo systemctl enable newsfeed
 sudo systemctl start newsfeed
+```
 
 WARNING! First start no deamon
