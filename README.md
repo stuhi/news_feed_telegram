@@ -1,5 +1,4 @@
-# news_feed_telegram
-news feed telegram (teleton client)
+# news feed telegram (teleton client)
 
 Ubuntu 20.04:
 1. install [teleton](https://github.com/LonamiWebs/Telethon)
